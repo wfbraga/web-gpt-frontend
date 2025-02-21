@@ -16,21 +16,31 @@ function App() {
       message: "Olá, eu sou o GPT-3, como posso te ajudar?"
     }])
 
-  async function handleSubmit(event) {
-    event.preventDefault()
-    let response = await makeRequest({prompt: input})
-    response = response.data.split('\n').map(line => `<p>${line}<p/>`)
-    setChatlog([...chatlog, {
-      user: 'me',
-      message: `${input}`
-    },
-    {
-      user: 'gpt',
-      message: `${response}`
+async function handleSubmit(event) {
+  event.preventDefault()
+  try {
+    let response = await makeRequest({ prompt: input })
+    console.log(response)
+    if (response && response.data) {
+      response = response.data.split('\n').map(line => `<p>${line}<p/>`)
+      setChatlog([...chatlog, {
+        user: 'me',
+        message: `${input}`
+      },
+      {
+        user: 'gpt',
+        message: `${response}`
+      }
+      ])
+    } else {
+      console.error('Response data is undefined')
+      console.log(response)
     }
-    ])
-    setInput('')
-  } 
+  } catch (error) {
+    console.error('Error making request:', error)
+  }
+  setInput('')
+}
 
   return (
     <div className="App">
