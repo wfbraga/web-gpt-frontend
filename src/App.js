@@ -22,7 +22,7 @@ async function handleSubmit(event) {
     let response = await makeRequest({ prompt: input })
     console.log(response)
     if (response && response.data) {
-      response = response.data.split('\n').map(line => `<p>${line}<p/>`)
+      response = response.data.split('\n').map(line => line)
       setChatlog([...chatlog, {
         user: 'me',
         message: `${input}`

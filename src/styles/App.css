@@ -73,14 +73,43 @@
   text-align: left;
   white-space: pre-wrap;
   padding: 24px;
+  max-height: 80vh;
+  overflow-y: auto;
 }
+
+/* Estilizando a barra de rolagem */
+.chatlog::-webkit-scrollbar {
+  width: 12px; /* Largura da barra de rolagem */
+}
+
+.chatlog::-webkit-scrollbar-track {
+  background: #353541; /* Cor do fundo da barra de rolagem */
+  border-radius: 10px;
+}
+
+.chatlog::-webkit-scrollbar-thumb {
+  background-color: #40414f; /* Cor da barra de rolagem */
+  border-radius: 10px;
+  border: 3px solid #353541; /* Espaço ao redor da barra de rolagem */
+}
+
+.chatlog::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Cor da barra de rolagem ao passar o mouse */
+}
+
 .chat-message.chatgpt{
-  background-attachment: #445674;
+  background-attachment: #878f9c;
 }
 .avatar{
   width: 40px;
   height: 40px;
   border-radius: 50%;
+}
+.avatar.me{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #5c757c;
 }
 .avatar.chatgpt{
   width: 40px;

@@ -1,6 +1,7 @@
 import React from 'react';
 import './ChatMessage.css';
 import Avatar from '../../assets/avatar';
+import UserAvatar from '../../assets/user_avatar';
 
 // propriedades do objeto message a ser pasado para ChatMessage
 // user ( user | chatbot ) - quem enviou a mensagem
@@ -13,6 +14,11 @@ export const ChatMessage = ({ message }) => {
                     {message.user === 'gpt' && (
                         <span>
                             <Avatar/>
+                        </span>
+                    )}
+                    {message.user === 'me' && (
+                        <span className='me'>
+                            <UserAvatar/>
                         </span>
                     )}
                 </div>
